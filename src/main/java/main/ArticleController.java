@@ -1,6 +1,7 @@
 package main;
 
 import model.Article;
+import org.hibernate.validator.constraints.URL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,18 +15,19 @@ import java.util.logging.Level;
 import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 
 @RestController
+@RequestMapping("articles")
 public class ArticleController {
     Logger logger = LoggerFactory.getLogger(ArticleController.class);
 
     @Autowired
     private ArticleService articleService;
 
-    @RequestMapping("/articles")
+    @RequestMapping("")
     public List<Article> getAllArticles() {
         return articleService.getAllArticles();
     }
 
-    @RequestMapping("/articles/{id}")
+    @RequestMapping("/{id}")
     public Article getArticle(@PathVariable String id, HttpServletResponse response) {
         try {
             return articleService.getArticle(id);

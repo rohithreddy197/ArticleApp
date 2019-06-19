@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class ArticleService {
+public class ArticleService implements  ArticleServiceInterface {
     List<Article> articleList= new ArrayList<Article>(Arrays.asList(
             new Article("1", "name1", "desc1"),
             new Article("2", "name2", "desc2"),
